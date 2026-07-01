@@ -441,11 +441,13 @@ text-align:center;
 
 .section-header h2{
 
-    font-size:56px;
+    font-size:48px;
 
     font-weight:800;
 
     margin-bottom:24px;
+
+    line-height:1.15;
 
 }
 
