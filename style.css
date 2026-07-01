@@ -1108,3 +1108,30 @@ grid-template-columns:1fr;
 }
 
 }
+/* =====================================
+   HERO IMAGE
+===================================== */
+
+.hero-image{
+
+    position:relative;
+
+    z-index:5;
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:60px;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:700px;
+
+    height:auto;
+
+}
