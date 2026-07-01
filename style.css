@@ -127,7 +127,7 @@ header{
 
 .hero{
 
-    min-height:78vh;
+    min-height:68vh;
 
     display:flex;
 
@@ -179,19 +179,12 @@ h1{
 }
 
 .subtitle{
-
     color:#CBD5E1;
-
-    font-size:22px;
-
-    line-height:1.9;
-
-    max-width:760px;
-
+    font-size:20px;
+    line-height:1.8;
+    max-width:680px;
     margin:auto;
-
-    opacity:.92;
-
+    opacity:.9;
 }
 .buttons{
 
