@@ -466,17 +466,49 @@ text-align:center;
     border-color:#2563EB;
 
     box-shadow:0 20px 60px rgba(37,99,235,.18);
+   transform:translateY(-12px) scale(1.02);
+
+}
+.topic-card:hover .icon{
+
+    background:#2563EB;
 
 }
 
+.topic-card:hover .icon svg{
+
+    stroke:white;
+
+}
 .icon{
 
-    font-size:52px;
+    width:64px;
+    height:64px;
 
-    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    margin-bottom:28px;
+
+    transition:.35s ease;
 
 }
+.icon svg{
 
+    width:30px;
+
+    height:30px;
+
+    stroke:#60A5FA;
+
+    stroke-width:2;
+
+}
 .topic-card h3{
 
     font-size:32px;
