@@ -20,3 +20,12 @@ const navigation = document.getElementById("primary-navigation");
 menuToggle.addEventListener("click", () => {
     navigation.classList.toggle("active");
 });
+document.querySelectorAll("#primary-navigation a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navigation.classList.remove("active");
+
+    });
+
+});
