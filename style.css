@@ -178,7 +178,7 @@ header.scrolled{
     text-align:center;
    gap:100px;
 
-    padding:120px 30px 80px;
+   padding:120px 30px 40px;
 
     overflow:hidden;
    
@@ -215,7 +215,7 @@ header.scrolled{
 
 h1{
 
-    font-size:78px;
+    font-size:72px;
 
     line-height:1.05;
 
