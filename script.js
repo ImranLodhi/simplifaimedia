@@ -14,3 +14,9 @@ window.addEventListener("scroll", () => {
     }
 
 });
+const menuToggle = document.getElementById("menu-toggle");
+const navigation = document.getElementById("primary-navigation");
+
+menuToggle.addEventListener("click", () => {
+    navigation.classList.toggle("active");
+});
