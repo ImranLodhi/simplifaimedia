@@ -1185,7 +1185,7 @@ grid-template-columns:1fr;
 
     width:56px;
 
-    margin-bottom:20px;
+    margin-bottom:12px;
 
 }
 
@@ -1193,13 +1193,13 @@ grid-template-columns:1fr;
 
     font-size:30px;
 
-    margin-bottom:16px;
+    margin-bottom:10px;
 
 }
 
 .footer-brand>p:first-of-type{
 
-    color:white;
+    color:#06B6D4;
 
     font-size:20px;
 
@@ -1259,7 +1259,7 @@ grid-template-columns:1fr;
 
 .footer-bottom{
 
-    max-width:1400px;
+    max-width:1200px;
 
     margin:70px auto 0;
 
