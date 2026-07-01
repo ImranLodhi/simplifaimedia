@@ -318,25 +318,22 @@ h1{
 
     position:absolute;
 
-    width:1200px;
+    width:1400px;
 
-    height:1200px;
+    height:1400px;
 
     border-radius:50%;
 
     background:
+        radial-gradient(circle at 30% 30%, rgba(37,99,235,.45), transparent 35%),
+        radial-gradient(circle at 70% 35%, rgba(139,92,246,.35), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(6,182,212,.35), transparent 35%);
 
-    radial-gradient(circle,#2563EB 0%,transparent 45%),
+    filter:blur(90px);
 
-    radial-gradient(circle at top,#8B5CF6 0%,transparent 35%),
+    opacity:.65;
 
-    radial-gradient(circle at bottom,#06B6D4 0%,transparent 35%);
-
-    opacity:.40;
-
-    filter:blur(80px);
-
-    animation:float 12s ease-in-out infinite;
+    animation:heroFloat 18s ease-in-out infinite alternate;
 
 }
 
