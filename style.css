@@ -51,7 +51,7 @@ header{
 
 .navbar{
 
-    max-width:1400px;
+    max-width:1500px;
 
     margin:auto;
 
@@ -61,10 +61,9 @@ header{
 
     align-items:center;
 
-    padding:22px 60px;
+    padding:24px 80px;
 
 }
-
 .logo{
 
     display:flex;
