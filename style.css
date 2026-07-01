@@ -723,3 +723,112 @@ section{
     scroll-margin-top:100px;
 
 }
+/* =====================================
+   RESOURCES
+===================================== */
+
+.resources{
+
+    padding:120px 8%;
+
+    background:#111827;
+
+}
+
+.resources-grid{
+
+    max-width:1400px;
+
+    margin:80px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.resource-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    transition:.35s ease;
+
+}
+
+.resource-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#2563EB;
+
+    box-shadow:0 25px 70px rgba(37,99,235,.18);
+
+}
+
+.resource-tag{
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(37,99,235,.15);
+
+    color:#60A5FA;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.resource-card h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+}
+
+.resource-card p{
+
+    color:#94A3B8;
+
+    line-height:1.8;
+
+    margin-bottom:24px;
+
+}
+
+.resource-card a{
+
+    color:#60A5FA;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+@media(max-width:900px){
+
+.resources-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
