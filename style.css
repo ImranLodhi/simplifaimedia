@@ -1047,40 +1047,62 @@ font-size:34px;
     font-size:34px;
 
 }
+.contact-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:20px;
+
+    background:#2563EB;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:28px;
+
+}
+
+.contact-icon svg,
+.contact-icon i{
+
+    font-size:34px;
+
+}
+
+/* Replace the deleted YouTube/Instagram color rules with this */
+
+.contact-icon i{
+
+    color:#FFFFFF;
+
+}
+
+.contact-icon svg{
+
+    width:34px;
+
+    height:34px;
+
+    stroke:#FFFFFF;
+
+}
+
+.contact-card h3{
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+}
 /* Official brand colors */
 
-.fa-youtube{
 
-    color:#FF0000;
 
-}
-
-.fa-instagram{
-
-    background:linear-gradient(
-        45deg,
-        #F58529,
-        #DD2A7B,
-        #8134AF,
-        #515BD4
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-}
-.contact-card:nth-child(1) .contact-icon{
-    background:#2563EB;
-}
-
-.contact-card:nth-child(2) .contact-icon{
-    background:#FFFFFF;
-}
-
-.contact-card:nth-child(3) .contact-icon{
-    background:#FFFFFF;
-}
 .contact-card h3{
 
     font-size:30px;
