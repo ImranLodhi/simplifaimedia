@@ -48,6 +48,17 @@ header{
     border-bottom:1px solid rgba(255,255,255,.06);
 
 }
+header.scrolled{
+
+    background:rgba(11,17,32,.88);
+
+    backdrop-filter:blur(28px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transition:all .35s ease;
+
+}
 
 .navbar{
 
