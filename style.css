@@ -51,7 +51,7 @@ header{
 
 .navbar{
 
-    max-width:1300px;
+    max-width:1400px;
 
     margin:auto;
 
@@ -61,7 +61,7 @@ header{
 
     align-items:center;
 
-    padding:20px 40px;
+    padding:22px 60px;
 
 }
 
@@ -95,9 +95,11 @@ header{
 
     display:flex;
 
-    gap:38px;
+    gap:48px;
 
     list-style:none;
+
+    align-items:center;
 
 }
 
