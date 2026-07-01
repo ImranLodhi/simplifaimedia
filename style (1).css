@@ -1,0 +1,861 @@
+/* ==========================================================
+   SIMPLIFAI MEDIA
+   Version 2.0 — refactored for premium look, a11y, performance
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   1. Design tokens
+   ---------------------------------------------------------- */
+:root{
+    /* Colors */
+    --bg:#0B1120;
+    --bg-alt:#0F172A;
+    --text:#F8FAFC;
+    --text-muted:#94A3B8;
+    --text-muted-light:#CBD5E1;
+    --border:rgba(255,255,255,.08);
+    --border-soft:rgba(255,255,255,.06);
+    --surface:rgba(255,255,255,.03);
+    --accent-blue:#2563EB;
+    --accent-blue-light:#60A5FA;
+    --accent-cyan:#06B6D4;
+    --accent-purple:#8B5CF6;
+
+    /* Layout */
+    --container:1400px;
+    --header-height:64px;
+    --radius-lg:24px;
+    --radius-pill:999px;
+
+    /* Motion */
+    --ease-premium:cubic-bezier(.16,1,.3,1);
+    --transition-fast:.3s var(--ease-premium);
+    --transition-med:.4s var(--ease-premium);
+}
+
+/* ----------------------------------------------------------
+   2. Reset & base
+   ---------------------------------------------------------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    line-height:1.5;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    color:inherit;
+}
+
+/* Anchor targets shouldn't hide under the fixed header */
+section[id]{
+    scroll-margin-top:var(--header-height);
+}
+
+::selection{
+    background:var(--accent-blue);
+    color:#fff;
+}
+
+/* Custom scrollbar (WebKit) */
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-track{
+    background:var(--bg);
+}
+::-webkit-scrollbar-thumb{
+    background:#1E293B;
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:#334155;
+}
+
+/* ----------------------------------------------------------
+   3. Accessibility helpers
+   ---------------------------------------------------------- */
+.skip-link{
+    position:absolute;
+    top:-48px;
+    left:16px;
+    z-index:2000;
+    background:var(--accent-blue);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:top .25s var(--ease-premium);
+}
+
+.skip-link:focus{
+    top:16px;
+}
+
+a:focus-visible,
+button:focus-visible{
+    outline:2px solid var(--accent-blue-light);
+    outline-offset:4px;
+    border-radius:8px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+}
+
+/* ----------------------------------------------------------
+   4. Navigation — Apple-style glass bar
+   ---------------------------------------------------------- */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    background:rgba(11,17,32,.45);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    transition:background var(--transition-fast), box-shadow var(--transition-fast),
+               border-color var(--transition-fast);
+}
+
+/* Added via script.js once the user scrolls past the top */
+header.scrolled{
+    background:rgba(11,17,32,.78);
+    border-bottom-color:rgba(255,255,255,.1);
+    box-shadow:0 4px 24px rgba(0,0,0,.28);
+}
+
+header.scrolled .navbar{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+header.scrolled .logo img{
+    width:34px;
+    height:34px;
+}
+
+.navbar{
+    max-width:var(--container);
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    padding:14px 60px;
+    transition:padding var(--transition-fast);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:36px;
+    height:36px;
+    transition:width var(--transition-fast), height var(--transition-fast);
+}
+
+.logo span{
+    font-size:1.15rem;
+    font-weight:700;
+}
+
+.navbar ul{
+    position:relative;
+    display:flex;
+    gap:8px;
+    list-style:none;
+    align-items:center;
+}
+
+.navbar ul a{
+    position:relative;
+    z-index:1;
+    display:inline-block;
+    padding:9px 16px;
+    text-decoration:none;
+    font-weight:500;
+    font-size:.95rem;
+    color:var(--text);
+    transition:color var(--transition-fast);
+}
+
+.navbar ul a:hover,
+.navbar ul a[aria-current="page"]{
+    color:#fff;
+}
+
+/* Sliding glass pill — positioned by script.js on hover / active section */
+.nav-indicator{
+    position:absolute;
+    top:50%;
+    left:0;
+    height:38px;
+    width:0;
+    border-radius:var(--radius-pill);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.09);
+    transform:translateY(-50%);
+    opacity:0;
+    transition:transform var(--transition-fast), width var(--transition-fast),
+               opacity var(--transition-fast), left var(--transition-fast);
+    pointer-events:none;
+    z-index:0;
+}
+
+.nav-indicator.is-visible{
+    opacity:1;
+}
+
+/* Premium CTA */
+.nav-cta{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    display:inline-flex;
+    align-items:center;
+    background:linear-gradient(135deg, var(--accent-blue), #1D4ED8);
+    color:#fff;
+    font-weight:600;
+    font-size:.9rem;
+    text-decoration:none;
+    padding:10px 22px;
+    border-radius:var(--radius-pill);
+    box-shadow:0 6px 18px rgba(37,99,235,.3);
+    transition:transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.nav-cta::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-60%;
+    width:45%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .6s var(--ease-premium);
+}
+
+.nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(37,99,235,.45);
+}
+
+.nav-cta:hover::after{
+    left:130%;
+}
+
+.nav-cta:active{
+    transform:translateY(0) scale(.97);
+}
+
+/* ----------------------------------------------------------
+   5. Mobile navigation (toggle, panel, backdrop)
+   ---------------------------------------------------------- */
+.nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--text);
+    cursor:pointer;
+    padding:8px;
+    z-index:1100;
+}
+
+.nav-toggle svg{
+    width:24px;
+    height:24px;
+}
+
+.nav-toggle .icon-close{
+    display:none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-menu{
+    display:none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-close{
+    display:block;
+}
+
+/* Dims the page behind the open mobile panel */
+.nav-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(5,8,16,.6);
+    backdrop-filter:blur(2px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity var(--transition-med);
+    z-index:900;
+}
+
+.nav-backdrop.is-visible{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* ----------------------------------------------------------
+   6. Hero
+   ---------------------------------------------------------- */
+.hero{
+    /* Shorter than before so the Topics section peeks in without scrolling */
+    min-height:64vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    text-align:center;
+    padding:calc(var(--header-height) + 40px) 30px 70px;
+    overflow:hidden;
+    isolation:isolate; /* own stacking context for the layered glow */
+}
+
+/* Layer 1 — deep ambient wash across the whole section (depth, very subtle) */
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 28% 20%, rgba(37,99,235,.14), transparent 55%),
+        radial-gradient(circle at 72% 82%, rgba(6,182,212,.11), transparent 55%);
+    animation:heroDrift 22s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:0;
+}
+
+@keyframes heroDrift{
+    0%{ transform:translate3d(0,0,0) scale(1); }
+    100%{ transform:translate3d(-2%,2%,0) scale(1.05); }
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    max-width:900px;
+    isolation:isolate;
+    animation:fadeInUp .9s var(--ease-premium) both;
+}
+
+/* Layer 2 — soft animated glow sitting directly behind the headline */
+.hero-content::before{
+    content:'';
+    position:absolute;
+    top:-130px;
+    left:50%;
+    width:900px;
+    height:520px;
+    max-width:150vw;
+    transform:translateX(-50%);
+    background:
+        radial-gradient(circle, rgba(37,99,235,.35), transparent 60%),
+        radial-gradient(circle at 62% 38%, rgba(139,92,246,.26), transparent 55%),
+        radial-gradient(circle at 38% 62%, rgba(6,182,212,.24), transparent 55%);
+    filter:blur(70px);
+    z-index:-1;
+    animation:heroGlowPulse 8s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes heroGlowPulse{
+    0%,100%{ opacity:.7; transform:translateX(-50%) scale(1); }
+    50%{ opacity:1; transform:translateX(-50%) scale(1.08); }
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    color:var(--accent-cyan);
+    letter-spacing:3px;
+    font-size:.8rem;
+    font-weight:600;
+    margin-bottom:28px;
+    opacity:.9;
+}
+
+.eyebrow::before{
+    content:'';
+    display:inline-block;
+    width:26px;
+    height:1px;
+    margin-right:10px;
+    background:var(--accent-cyan);
+    opacity:.8;
+}
+
+h1{
+    /* Fluid scale, slightly tightened for a shorter, more editorial hero */
+    font-size:clamp(2.5rem, 4.6vw + .7rem, 4.75rem);
+    line-height:1.04;
+    font-weight:800;
+    letter-spacing:-.03em;
+    margin-bottom:34px;
+
+    /* Subtle top-to-bottom brightness fade — premium depth, still reads as white */
+    background:linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(255,255,255,.78) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    color:var(--text-muted-light);
+    font-size:clamp(1.05rem, .55vw + .8rem, 1.25rem);
+    font-weight:400;
+    line-height:1.75;
+    max-width:640px;
+    margin:auto;
+    opacity:.9;
+}
+
+.buttons{
+    margin-top:52px;
+    display:flex;
+    justify-content:center;
+    gap:24px;
+    flex-wrap:wrap;
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(24px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* Hero — responsive adjustments (kept scoped to hero only) */
+@media (max-width:900px){
+    .hero{
+        min-height:58vh;
+        padding:calc(var(--header-height) + 28px) 24px 56px;
+    }
+    .hero-content::before{
+        width:620px;
+        height:400px;
+    }
+}
+
+@media (max-width:600px){
+    .hero{
+        min-height:auto;
+        padding:calc(var(--header-height) + 24px) 20px 48px;
+    }
+    .buttons{
+        margin-top:40px;
+    }
+}
+
+/* ----------------------------------------------------------
+   7. Buttons (used exclusively by the hero CTAs)
+   ---------------------------------------------------------- */
+.primary-btn{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    background:linear-gradient(135deg, var(--accent-blue), #1D4ED8);
+    color:#fff;
+    padding:17px 36px;
+    border-radius:var(--radius-pill);
+    text-decoration:none;
+    font-weight:600;
+    display:inline-block;
+    box-shadow:0 8px 24px rgba(37,99,235,.28);
+    transition:transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+/* Light sweep on hover — subtle, one-shot */
+.primary-btn::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-60%;
+    width:45%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .7s var(--ease-premium);
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px) scale(1.015);
+    box-shadow:0 20px 45px rgba(37,99,235,.5);
+}
+
+.primary-btn:hover::after{
+    left:130%;
+}
+
+.primary-btn:active{
+    transform:translateY(-1px) scale(.98);
+}
+
+.secondary-btn{
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(6px);
+    color:#fff;
+    text-decoration:none;
+    padding:17px 36px;
+    border-radius:var(--radius-pill);
+    display:inline-block;
+    transition:background var(--transition-med), color var(--transition-med),
+               border-color var(--transition-med), transform var(--transition-med),
+               box-shadow var(--transition-med);
+}
+
+.secondary-btn:hover{
+    background:#fff;
+    color:var(--bg);
+    border-color:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 16px 40px rgba(255,255,255,.15);
+}
+
+.secondary-btn:active{
+    transform:translateY(-1px) scale(.98);
+}
+
+/* Keep focus rings pill-shaped on hero CTAs (overrides the generic 8px radius) */
+.hero .primary-btn:focus-visible,
+.hero .secondary-btn:focus-visible{
+    border-radius:var(--radius-pill);
+}
+
+/* ----------------------------------------------------------
+   8. Animated hero background
+   ---------------------------------------------------------- */
+.hero-bg{
+    position:absolute;
+    width:1100px;
+    height:1100px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,var(--accent-blue) 0%,transparent 45%),
+        radial-gradient(circle at top,var(--accent-purple) 0%,transparent 35%),
+        radial-gradient(circle at bottom,var(--accent-cyan) 0%,transparent 35%);
+    opacity:.18;
+    filter:blur(80px);
+    animation:float 12s ease-in-out infinite;
+    pointer-events:none;
+    z-index:1;
+}
+
+@keyframes float{
+    0%{ transform:translateY(-40px) rotate(0deg); }
+    50%{ transform:translateY(40px) rotate(180deg); }
+    100%{ transform:translateY(-40px) rotate(360deg); }
+}
+
+/* ----------------------------------------------------------
+   9. Topics section
+   ---------------------------------------------------------- */
+.topics{
+    padding:140px 8%;
+    background:var(--bg-alt);
+}
+
+.section-header{
+    max-width:760px;
+    margin:0 auto 80px;
+    text-align:center;
+}
+
+.section-label{
+    color:var(--accent-cyan);
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.section-header h2{
+    font-size:clamp(2.625rem, 2.8vw + 1.05rem, 3.5rem);
+    font-weight:800;
+    margin-bottom:24px;
+    letter-spacing:-.01em;
+}
+
+.section-description{
+    color:var(--text-muted);
+    font-size:20px;
+    line-height:1.8;
+}
+
+.topics-grid{
+    max-width:var(--container);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.topic-card{
+    position:relative;
+    isolation:isolate;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:52px 48px;
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,.2),
+        0 12px 28px -12px rgba(0,0,0,.4);
+    cursor:default;
+    transition:transform .5s var(--ease-premium), border-color var(--transition-med),
+               box-shadow var(--transition-med), opacity var(--transition-med);
+
+    /* Driven by script.js on mousemove; CSS :hover below provides a
+       no-JS fallback so lift/scale still work without the tilt. */
+    transform:perspective(1000px)
+              translateY(var(--card-lift,0px))
+              scale(var(--card-scale,1))
+              rotateX(var(--card-rx,0deg))
+              rotateY(var(--card-ry,0deg));
+
+    /* Scroll-reveal starting state (activated by script.js) */
+    opacity:0;
+}
+
+.topic-card.is-visible{
+    opacity:1;
+}
+
+/* Gradient border ring — fades in on hover, sits above the base border */
+.topic-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    padding:1px;
+    background:linear-gradient(135deg,
+        rgba(96,165,250,.9), rgba(139,92,246,.65), rgba(6,182,212,.9));
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:0;
+    transition:opacity var(--transition-med);
+    pointer-events:none;
+    z-index:1;
+}
+
+/* Cursor-tracking glass sheen — position set by script.js */
+.topic-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:radial-gradient(560px circle at var(--mx,50%) var(--my,50%),
+        rgba(255,255,255,.08), transparent 42%);
+    opacity:0;
+    transition:opacity var(--transition-fast);
+    pointer-events:none;
+    z-index:1;
+}
+
+.topic-card:hover{
+    --card-lift:-10px;
+    --card-scale:1.015;
+    border-color:rgba(255,255,255,.14);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,.2),
+        0 24px 48px -16px rgba(37,99,235,.35);
+}
+
+.topic-card:hover::before,
+.topic-card:hover::after{
+    opacity:1;
+}
+
+.topic-card:hover .icon{
+    background:var(--accent-blue);
+    border-color:rgba(255,255,255,.18);
+    transform:scale(1.08) rotate(-4deg);
+}
+
+.topic-card:hover .icon svg{
+    stroke:#fff;
+}
+
+.icon{
+    position:relative;
+    z-index:2;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    margin-bottom:30px;
+    transition:background var(--transition-fast), border-color var(--transition-fast),
+               transform var(--transition-fast);
+}
+
+.icon svg{
+    width:26px;
+    height:26px;
+    stroke:var(--accent-blue-light);
+    stroke-width:1.75;
+    transition:stroke var(--transition-fast);
+}
+
+.topic-card h3{
+    position:relative;
+    z-index:2;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-.01em;
+    margin-bottom:12px;
+}
+
+.topic-card p{
+    position:relative;
+    z-index:2;
+    color:var(--text-muted);
+    line-height:1.7;
+    font-size:15.5px;
+}
+
+/* No-JS fallback: never hide content if scripting is unavailable */
+@media (scripting: none){
+    .topic-card{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* ----------------------------------------------------------
+   10. Responsive
+   ---------------------------------------------------------- */
+@media (max-width:900px){
+
+    .navbar{
+        padding:14px 22px;
+    }
+
+    .nav-indicator{
+        display:none;
+    }
+
+    .navbar ul{
+        position:fixed;
+        top:0;
+        right:0;
+        height:100vh;
+        width:min(320px,80%);
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+        gap:8px;
+        background:rgba(11,17,32,.85);
+        backdrop-filter:blur(30px) saturate(180%);
+        -webkit-backdrop-filter:blur(30px) saturate(180%);
+        border-left:1px solid var(--border-soft);
+        padding:110px 36px 40px;
+        transform:translateX(100%);
+        opacity:0;
+        transition:transform .5s var(--ease-premium), opacity .35s var(--ease-premium);
+        z-index:1000;
+    }
+
+    .navbar ul.is-open{
+        transform:translateX(0);
+        opacity:1;
+    }
+
+    /* Staggered fade-in for each link as the panel opens */
+    .navbar ul li{
+        width:100%;
+        opacity:0;
+        transform:translateX(16px);
+        transition:opacity .4s var(--ease-premium), transform .4s var(--ease-premium);
+    }
+
+    .navbar ul.is-open li{
+        opacity:1;
+        transform:none;
+    }
+
+    .navbar ul.is-open li:nth-child(2){ transition-delay:.05s; }
+    .navbar ul.is-open li:nth-child(3){ transition-delay:.1s; }
+    .navbar ul.is-open li:nth-child(4){ transition-delay:.15s; }
+    .navbar ul.is-open li:nth-child(5){ transition-delay:.2s; }
+    .navbar ul.is-open li:nth-child(6){ transition-delay:.25s; }
+
+    .navbar ul a{
+        font-size:1.1rem;
+        padding:10px 4px;
+        display:block;
+    }
+
+    .nav-toggle{
+        display:flex;
+    }
+
+    .nav-cta{
+        padding:9px 18px;
+        font-size:.85rem;
+    }
+
+    .topics-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media (max-width:600px){
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+/* Lock body scroll while the mobile menu is open (class set by script.js) */
+body.menu-open{
+    overflow:hidden;
+}
