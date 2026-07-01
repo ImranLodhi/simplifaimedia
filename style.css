@@ -104,16 +104,48 @@ header{
 
 .navbar a{
 
+    position:relative;
+
     color:white;
 
     text-decoration:none;
 
     font-weight:500;
 
-    transition:.3s;
+    transition:color .3s ease;
+
+}
+.navbar a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#06B6D4;
+
+    transition:width .3s ease;
 
 }
 
+.navbar a:hover::after{
+
+    width:100%;
+
+}
+
+.navbar a:hover{
+
+    color:#06B6D4;
+
+}
 .navbar a:hover{
 
     color:#06B6D4;
