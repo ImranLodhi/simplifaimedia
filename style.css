@@ -1031,13 +1031,12 @@ font-size:34px;
 
 }
 
-.contact-icon svg{
+.contact-icon svg,
+.contact-icon i{
 
-    width:34px;
+    font-size:34px;
 
-    height:34px;
-
-    stroke:white;
+    color:white;
 
 }
 
