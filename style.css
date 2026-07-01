@@ -151,7 +151,9 @@ header{
 
     z-index:5;
 
-    max-width:900px;
+    max-width:950px;
+
+    margin-top:40px;
 
 }
 
@@ -171,7 +173,7 @@ header{
 
 h1{
 
-    font-size:76px;
+    font-size:84px;
 
     line-height:1.05;
 
@@ -185,19 +187,20 @@ h1{
 
     color:#CBD5E1;
 
-    font-size:1.25rem;
+    font-size:22px;
 
-    line-height:1.8;
+    line-height:1.9;
 
     max-width:760px;
 
     margin:auto;
 
-}
+    opacity:.92;
 
+}
 .buttons{
 
-    margin-top:50px;
+    margin-top:60px;
 
     display:flex;
 
