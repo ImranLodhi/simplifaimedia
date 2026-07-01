@@ -370,3 +370,142 @@ text-align:center;
 }
 
 }
+/* =====================================
+   Explore What Matters
+===================================== */
+
+.topics{
+
+    padding:140px 8%;
+
+    background:#0F172A;
+
+}
+
+.section-header{
+
+    max-width:760px;
+
+    margin:0 auto 80px;
+
+    text-align:center;
+
+}
+
+.section-label{
+
+    color:#06B6D4;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+}
+
+.section-header h2{
+
+    font-size:56px;
+
+    font-weight:800;
+
+    margin-bottom:24px;
+
+}
+
+.section-description{
+
+    color:#94A3B8;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+.topics-grid{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.topic-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    transition:.4s ease;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.topic-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#2563EB;
+
+    box-shadow:0 20px 60px rgba(37,99,235,.18);
+
+}
+
+.icon{
+
+    font-size:52px;
+
+    margin-bottom:24px;
+
+}
+
+.topic-card h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+}
+
+.topic-card p{
+
+    color:#94A3B8;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.topics-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.section-header h2{
+
+font-size:42px;
+
+}
+
+}
