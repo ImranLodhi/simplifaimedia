@@ -671,3 +671,12 @@ font-size:42px;
 }
 
 }
+/* =====================================
+   Smooth Anchor Scrolling
+===================================== */
+
+section{
+
+    scroll-margin-top:100px;
+
+}
