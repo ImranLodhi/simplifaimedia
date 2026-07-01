@@ -1,1 +1,370 @@
+/* ==========================
+   SIMPLIFAI MEDIA
+   Version 1.0
+========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:#0B1120;
+
+    color:#F8FAFC;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+        Navigation
+========================== */
+
+header{
+
+    position:fixed;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+    z-index:1000;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(11,17,32,.55);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.navbar{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 40px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo img{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+.logo span{
+
+    font-size:1.25rem;
+
+    font-weight:700;
+
+}
+
+.navbar ul{
+
+    display:flex;
+
+    gap:38px;
+
+    list-style:none;
+
+}
+
+.navbar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.navbar a:hover{
+
+    color:#06B6D4;
+
+}
+
+/* ==========================
+          Hero
+========================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+    text-align:center;
+
+    padding:0 30px;
+
+    overflow:hidden;
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:5;
+
+    max-width:900px;
+
+}
+
+.eyebrow{
+
+    color:#06B6D4;
+
+    letter-spacing:4px;
+
+    font-size:.9rem;
+
+    margin-bottom:24px;
+
+    font-weight:600;
+
+}
+
+h1{
+
+    font-size:76px;
+
+    line-height:1.05;
+
+    font-weight:800;
+
+    margin-bottom:30px;
+
+}
+
+.subtitle{
+
+    color:#CBD5E1;
+
+    font-size:1.25rem;
+
+    line-height:1.8;
+
+    max-width:760px;
+
+    margin:auto;
+
+}
+
+.buttons{
+
+    margin-top:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================
+        Buttons
+========================== */
+
+.primary-btn{
+
+    background:#2563EB;
+
+    color:white;
+
+    padding:18px 34px;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 40px rgba(37,99,235,.45);
+
+}
+
+.secondary-btn{
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 34px;
+
+    border-radius:999px;
+
+    transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+    background:white;
+
+    color:#0B1120;
+
+}
+
+/* ==========================
+ Animated Background
+========================== */
+
+.hero-bg{
+
+    position:absolute;
+
+    width:1200px;
+
+    height:1200px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,#2563EB 0%,transparent 45%),
+
+    radial-gradient(circle at top,#8B5CF6 0%,transparent 35%),
+
+    radial-gradient(circle at bottom,#06B6D4 0%,transparent 35%);
+
+    opacity:.25;
+
+    filter:blur(80px);
+
+    animation:float 12s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(-40px) rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:translateY(40px) rotate(180deg);
+
+    }
+
+    100%{
+
+        transform:translateY(-40px) rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+ Responsive
+========================== */
+
+@media(max-width:900px){
+
+h1{
+
+font-size:52px;
+
+}
+
+.subtitle{
+
+font-size:18px;
+
+}
+
+.navbar{
+
+padding:18px 22px;
+
+}
+
+.navbar ul{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:600px){
+
+h1{
+
+font-size:42px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+.primary-btn,.secondary-btn{
+
+width:100%;
+
+text-align:center;
+
+}
+
+}
