@@ -75,6 +75,23 @@ header.scrolled{
     padding:24px 50px;
 
 }
+.menu-toggle{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:#F8FAFC;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    z-index:1100;
+
+}
 .logo{
 
     display:flex;
@@ -366,30 +383,35 @@ h1{
 
 h1{
 
-font-size:52px;
+    font-size:52px;
 
 }
 
 .subtitle{
 
-font-size:18px;
+    font-size:18px;
 
 }
 
 .navbar{
 
-padding:18px 22px;
+    padding:18px 22px;
+
+}
+
+.menu-toggle{
+
+    display:block;
 
 }
 
 .navbar ul{
 
-display:none;
+    display:none;
 
 }
 
 }
-
 @media(max-width:600px){
 
 h1{
