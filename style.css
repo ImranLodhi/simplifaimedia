@@ -1036,10 +1036,41 @@ font-size:34px;
 
     font-size:34px;
 
-    color:white;
+}
+/* Official brand colors */
+
+.fa-youtube{
+
+    color:#FF0000;
 
 }
 
+.fa-instagram{
+
+    background:linear-gradient(
+        45deg,
+        #F58529,
+        #DD2A7B,
+        #8134AF,
+        #515BD4
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+.contact-card:nth-child(1) .contact-icon{
+    background:#2563EB;
+}
+
+.contact-card:nth-child(2) .contact-icon{
+    background:#FFFFFF;
+}
+
+.contact-card:nth-child(3) .contact-icon{
+    background:#FFFFFF;
+}
 .contact-card h3{
 
     font-size:30px;
