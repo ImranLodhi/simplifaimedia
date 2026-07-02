@@ -110,11 +110,39 @@ header.scrolled{
 
 }
 
-.logo span{
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.1;
+
+}
+
+.logo-title{
 
     font-size:1.25rem;
 
     font-weight:700;
+
+    color:#F8FAFC;
+
+}
+
+.logo-tagline{
+
+    margin-top:3px;
+
+    font-size:.60rem;
+
+    font-weight:600;
+
+    letter-spacing:2.5px;
+
+    color:#06B6D4;
+
+    text-transform:uppercase;
 
 }
 
