@@ -116,11 +116,13 @@ header.scrolled{
 
     flex-direction:column;
 
-    line-height:1.1;
+    justify-content:center;
 
 }
 
 .logo-title{
+
+    display:block;
 
     font-size:1.25rem;
 
@@ -128,9 +130,13 @@ header.scrolled{
 
     color:#F8FAFC;
 
+    line-height:1.1;
+
 }
 
 .logo-tagline{
+
+    display:block;
 
     margin-top:3px;
 
@@ -144,8 +150,9 @@ header.scrolled{
 
     text-transform:uppercase;
 
-}
+    line-height:1;
 
+}
 .navbar ul{
 
     display:flex;
