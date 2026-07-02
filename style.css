@@ -516,15 +516,12 @@ text-align:center;
 
 .topics{
 
-    padding:100px 8%;
-
-    background:#0F172A;
+    padding:80px 8%;
 
 }
-
 .section-header{
 
-    max-width:950px;
+    max-width:760px;
 
     margin:0 auto 80px;
 
@@ -560,6 +557,10 @@ text-align:center;
 
 .section-description{
 
+    max-width:720px;
+
+    margin:0 auto;
+
     color:#94A3B8;
 
     font-size:20px;
@@ -590,7 +591,7 @@ text-align:center;
 
     border-radius:28px;
 
-    padding:40px;
+    padding:36px;
 
     transition:.4s ease;
 
@@ -682,150 +683,6 @@ font-size:42px;
 }
 
 }
-/* =====================================
-   ABOUT
-===================================== */
-
-.about{
-
-    padding:140px 8%;
-
-    background:#0B1120;
-
-}
-
-.about-container{
-
-    max-width:1400px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:80px;
-
-    align-items:center;
-
-}
-
-.about-left h2{
-
-    font-size:56px;
-
-    line-height:1.15;
-
-    margin-top:20px;
-
-}
-
-.about-right p{
-
-    color:#94A3B8;
-
-    font-size:20px;
-
-    line-height:1.9;
-
-    margin-bottom:28px;
-
-}
-
-.values-grid{
-
-    max-width:1400px;
-
-    margin:100px auto 0;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:30px;
-
-}
-
-.value-card{
-
-    padding:40px;
-
-    border-radius:24px;
-
-    background:rgba(255,255,255,.03);
-
-    border:1px solid rgba(255,255,255,.06);
-
-    transition:.35s ease;
-
-}
-
-.value-card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:#2563EB;
-
-    box-shadow:0 25px 70px rgba(37,99,235,.18);
-
-}
-
-.value-number{
-
-    display:inline-block;
-
-    color:#06B6D4;
-
-    font-size:14px;
-
-    letter-spacing:3px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
-}
-
-.value-card h3{
-
-    font-size:28px;
-
-    margin-bottom:18px;
-
-}
-
-.value-card p{
-
-    color:#94A3B8;
-
-    line-height:1.8;
-
-}
-
-@media(max-width:900px){
-
-.about-container{
-
-grid-template-columns:1fr;
-
-}
-
-.values-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.about-left h2{
-
-font-size:42px;
-
-}
-
-}
-/* =====================================
-   Smooth Anchor Scrolling
-===================================== */
 
 section{
 
@@ -838,9 +695,7 @@ section{
 
 .resources{
 
-    padding:120px 8%;
-
-    background:#111827;
+    padding:90px 8%;
 
 }
 
@@ -866,7 +721,7 @@ section{
 
     border-radius:24px;
 
-    padding:45px;
+    padding:40px;
 
     transition:.35s ease;
 
@@ -1070,9 +925,7 @@ font-size:34px;
 
 .contact{
 
-    padding:120px 8%;
-
-    background:#0F172A;
+    padding:90px 8%;
 
 }
 
@@ -1098,7 +951,7 @@ font-size:34px;
 
     border-radius:24px;
 
-    padding:50px;
+    padding:42px;
 
     text-decoration:none;
 
@@ -1144,32 +997,6 @@ font-size:34px;
     font-size:34px;
 
 }
-.contact-icon{
-
-    width:70px;
-
-    height:70px;
-
-    border-radius:20px;
-
-    background:#2563EB;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin-bottom:28px;
-
-}
-
-.contact-icon svg,
-.contact-icon i{
-
-    font-size:34px;
-
-}
 
 /* Replace the deleted YouTube/Instagram color rules with this */
 
@@ -1189,13 +1016,7 @@ font-size:34px;
 
 }
 
-.contact-card h3{
 
-    font-size:30px;
-
-    margin-bottom:18px;
-
-}
 /* Official brand colors */
 
 
@@ -1752,7 +1573,7 @@ grid-template-columns:1fr;
 
     border-top:1px solid rgba(255,255,255,.08);
 
-    padding:80px 8% 30px;
+    padding:60px 8% 30px;
 
 }
 
